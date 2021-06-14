@@ -33,7 +33,6 @@ class Signin extends React.Component {
       .then((user) => {
         if (user.id) {
           this.props.loadUser(user);
-          this.props.history.push("/Home");
         }
       });
   };
@@ -88,4 +87,4 @@ class Signin extends React.Component {
     );
   }
 }
-export default withRouter(Signin);
+export default Signin;
