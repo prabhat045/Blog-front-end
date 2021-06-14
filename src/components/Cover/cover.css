@@ -1,0 +1,41 @@
+.header {
+  padding: 60px;
+
+  background: #ffc017;
+  color: white;
+  height: 400px;
+  border-bottom: 1px solid black;
+  font-size: 22px;
+}
+h1 {
+  color: black;
+  font-size: 60px;
+}
+h3 {
+  color: black;
+}
+.first {
+  margin-right: 50%;
+}
+.second {
+  margin-right: 73%;
+}
+.third {
+  margin-right: 45%;
+  margin-top: 70px;
+}
+.fourth {
+  margin-right: 85.5%;
+}
+.button1 {
+  margin-right: 84%;
+
+  margin-top: 10px;
+}
+.text-div {
+  max-width: 600px;
+}
+.text {
+  float: left;
+  padding: 5px;
+}
