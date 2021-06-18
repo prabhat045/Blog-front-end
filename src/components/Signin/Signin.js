@@ -1,9 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
-import { Redirect } from "react-router-dom";
-import history from "../../history";
-import { withRouter } from "react-router-dom";
 
 class Signin extends React.Component {
   constructor(props) {
@@ -70,11 +66,14 @@ class Signin extends React.Component {
               </div>
             </fieldset>
             <div className=''>
-              <input
-                className='b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib'
-                type='button'
-                value='Sign in'
-              />
+              <Link to='/Home'>
+                <input
+                  onClick={this.onSubmitSignin}
+                  className='b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib'
+                  type='button'
+                  value='Sign in'
+                />
+              </Link>
             </div>
             <div className='lh-copy mt3'>
               <Link to='/Registration'>

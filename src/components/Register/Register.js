@@ -1,5 +1,6 @@
 import React from "react";
 import "./Register.css";
+import { Link } from "react-router-dom";
 class Register extends React.Component {
   constructor(props) {
     super(props);
@@ -33,7 +34,6 @@ class Register extends React.Component {
       .then((user) => {
         if (user.id) {
           this.props.loadUser(user);
-          this.props.onRouteChange("home");
         }
       });
   };
@@ -80,12 +80,14 @@ class Register extends React.Component {
               </div>
             </fieldset>
             <div className=''>
-              <input
-                onClick={this.onSubmitregister}
-                className='b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib'
-                type='button'
-                value='Register'
-              />
+              <Link to='/Home'>
+                <input
+                  onClick={this.onSubmitregister}
+                  className='b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib'
+                  type='button'
+                  value='Register'
+                />
+              </Link>
             </div>
           </form>
         </main>

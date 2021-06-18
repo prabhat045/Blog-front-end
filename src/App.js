@@ -6,8 +6,7 @@ import "tachyons";
 import Register from "./components/Register/Register";
 import Write from "./components/Write/Write";
 import Myarticles from "./components/Myarticles/Myarticles";
-import { Router, Route } from "react-router-dom";
-import history from "./history";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class App extends Component {
   constructor() {
@@ -32,7 +31,7 @@ class App extends Component {
 
   render() {
     return (
-      <Router history='history'>
+      <Router>
         <div className='App'>
           <Route exact path='/Home' component={Home} />
           <Route exact path='/' component={Signin} />
