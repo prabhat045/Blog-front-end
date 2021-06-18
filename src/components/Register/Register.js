@@ -7,17 +7,17 @@ const Register = (props) => {
   const [name, setName] = useState("");
 
   const onNameChange = (event) => {
-    setName({ name: event.target.value });
+    setName(event.target.value);
   };
   const onEmailChange = (event) => {
-    setEmail({ email: event.target.value });
+    setEmail(event.target.value);
   };
   const onPasswordChange = (event) => {
-    setPassword({ password: event.target.value });
+    setPassword(event.target.value);
   };
 
   const onSubmitregister = () => {
-    fetch("http://localhost:3000/register", {
+    fetch("http://localhost:5001/users/register", {
       method: "post",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({
