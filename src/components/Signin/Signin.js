@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Signin = (props) => {
   const [signInEmail, setSignInEmail] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
   const onEmailChange = (event) => {
-    setSignInEmail({ signInEmail: event.target.value });
+    setSignInEmail(event.target.value);
   };
   const onPasswordChange = (event) => {
-    setSignInPassword({ signInPassword: event.target.value });
+    setSignInPassword(event.target.value);
   };
-
+  let history = useHistory();
   const onSubmitSignin = () => {
-    fetch("http://localhost:3000/signin", {
+    fetch("http://localhost:5001/users/login", {
       method: "post",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({
@@ -23,6 +23,8 @@ const Signin = (props) => {
       .then((response) => response.json())
       .then((user) => {
         if (user.id) {
+          history.push("/Home");
+          console.log(user);
           props.loadUser(user);
         }
       });
@@ -60,14 +62,12 @@ const Signin = (props) => {
             </div>
           </fieldset>
           <div className="">
-            <Link to="/Home">
-              <input
-                onClick={onSubmitSignin}
-                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
-                type="button"
-                value="Sign in"
-              />
-            </Link>
+            <input
+              onClick={onSubmitSignin}
+              className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+              type="button"
+              value="Sign in"
+            />
           </div>
           <div className="lh-copy mt3">
             <Link to="/Registration">

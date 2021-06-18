@@ -14,13 +14,13 @@ const Write = (props) => {
   const [body, setBody] = useState("");
 
   const ontitleChange = (event) => {
-    setTitle({ title: event.target.value });
+    setTitle(event.target.value);
   };
   const ondescriptionChange = (event) => {
-    setDescription({ description: event.target.value });
+    setDescription(event.target.value);
   };
   const onbodyChange = (event) => {
-    setBody({ body: event.target.value });
+    setBody(event.target.value);
   };
 
   const onSubmitsave = () => {

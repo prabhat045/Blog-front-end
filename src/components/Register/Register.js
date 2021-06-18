@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Register.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 const Register = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,6 +16,7 @@ const Register = (props) => {
     setPassword(event.target.value);
   };
 
+  let history = useHistory();
   const onSubmitregister = () => {
     fetch("http://localhost:5001/users/register", {
       method: "post",
@@ -29,7 +30,8 @@ const Register = (props) => {
       .then((response) => response.json())
       .then((user) => {
         if (user.id) {
-          props.loadUser(user);
+          history.push("/Home");
+          console.log(user);
         }
       });
   };
@@ -76,14 +78,12 @@ const Register = (props) => {
             </div>
           </fieldset>
           <div className="">
-            <Link to="/Home">
-              <input
-                onClick={onSubmitregister}
-                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
-                type="button"
-                value="Register"
-              />
-            </Link>
+            <input
+              onClick={onSubmitregister}
+              className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+              type="button"
+              value="Register"
+            />
           </div>
         </form>
       </main>

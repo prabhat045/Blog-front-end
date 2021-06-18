@@ -13,11 +13,9 @@ const App = () => {
 
   const loadUser = (data) => {
     setUser({
-      user: {
-        id: data.id,
-        name: data.name,
-        email: data.email,
-      },
+      id: data.id,
+      name: data.name,
+      email: data.email,
     });
   };
 
