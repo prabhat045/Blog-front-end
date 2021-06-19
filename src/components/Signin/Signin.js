@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { UserContext } from "../Context/UserContext";
 
 const Signin = (props) => {
   const [signInEmail, setSignInEmail] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
+  const { setUser } = useContext(UserContext);
   const onEmailChange = (event) => {
     setSignInEmail(event.target.value);
   };
@@ -25,7 +27,7 @@ const Signin = (props) => {
         if (user.id) {
           history.push("/Home");
           console.log(user);
-          // props.loadUser(user);
+          setUser({ id: user.id, name: user.name, email: user.email });
         }
       });
   };
