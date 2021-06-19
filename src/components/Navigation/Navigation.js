@@ -4,11 +4,11 @@ import "./navigation.css";
 import { UserContext } from "../Context/UserContext";
 
 const Navigation = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { resetUser } = useContext(UserContext);
   let history = useHistory();
   const onLogout = () => {
     history.push("/");
-    setUser({});
+    resetUser();
   };
   return (
     <div>

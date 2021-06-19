@@ -33,9 +33,9 @@ const Register = () => {
       .then((response) => response.json())
       .then((user) => {
         if (user.id) {
-          history.push("/Home");
           console.log(user);
           setUser({ id: user.id, name: user.name, email: user.email });
+          history.push("");
         }
       });
   };

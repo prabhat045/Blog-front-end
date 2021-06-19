@@ -7,22 +7,22 @@ import Register from "./components/Register/Register";
 import Write from "./components/Write/Write";
 import Myarticles from "./components/Myarticles/Myarticles";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { UserContext } from "./components/Context/UserContext";
+import { Store } from "./components/Context/UserContext";
+import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
 
 const App = () => {
-  const [user, setUser] = useState({ id: "", name: "", email: "" });
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <Store>
       <Router>
         <div className="App">
-          <Route exact path="/Home" component={Home} />
-          <Route exact path="/" component={Signin} />
+          <ProtectedRoute exact path="/" component={Home} />
+          <Route exact path="/signin" component={Signin} />
           <Route exact path="/Registration" component={Register} />
           <Route exact path="/Write" component={Write} />
           <Route exact path="/Myarticles" component={Myarticles} />
         </div>
       </Router>
-    </UserContext.Provider>
+    </Store>
   );
 };
 
