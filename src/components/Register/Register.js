@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Register.css";
-import { Link, useHistory } from "react-router-dom";
-const Register = (props) => {
+import { useHistory } from "react-router-dom";
+import { UserContext } from "../Context/UserContext";
+
+const Register = () => {
+  const { setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -32,6 +35,7 @@ const Register = (props) => {
         if (user.id) {
           history.push("/Home");
           console.log(user);
+          setUser({ id: user.id, name: user.name, email: user.email });
         }
       });
   };

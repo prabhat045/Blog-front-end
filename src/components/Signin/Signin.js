@@ -25,7 +25,7 @@ const Signin = (props) => {
         if (user.id) {
           history.push("/Home");
           console.log(user);
-          props.loadUser(user);
+          // props.loadUser(user);
         }
       });
   };
