@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../Context/UserContext";
-
+import { useHistory } from "react-router-dom";
 const Write = () => {
   const { user } = useContext(UserContext);
   const [title, setTitle] = useState("");
@@ -9,7 +9,7 @@ const Write = () => {
   const [id, setId] = useState("");
   useEffect(() => {
     setId(user.id);
-  });
+  }, [user.id]);
   console.log(user);
 
   const ontitleChange = (event) => {
@@ -21,7 +21,7 @@ const Write = () => {
   const onmainbodyChange = (event) => {
     setmainBody(event.target.value);
   };
-
+  let history = useHistory();
   const onSubmitsave = () => {
     fetch("http://localhost:5001/articles/write", {
       method: "post",
@@ -34,67 +34,65 @@ const Write = () => {
       }),
     })
       .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      });
+      .then(history.push("/"));
   };
 
   const onsubmitCancel = () => {
-    setTitle({ title: title });
-    setDescription({ description: description });
-    setmainBody({ mainbody: mainbody });
+    setTitle("");
+    setDescription("");
+    setmainBody("");
   };
 
   return (
     <div>
-      <article className="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-4 center">
-        <form className="pa4 black-80">
-          <div className="measure">
-            <label htmlFor="Title" className="f6 b db mb2">
+      <article className='br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-4 center'>
+        <form className='pa4 black-80'>
+          <div className='measure'>
+            <label htmlFor='Title' className='f6 b db mb2'>
               Title
             </label>
             <input
-              id="title"
-              className="input-reset ba b--black-20 pa2 mb2 db w-100"
-              type="text"
-              aria-describedby="title-desc"
+              id='title'
+              className='input-reset ba b--black-20 pa2 mb2 db w-100'
+              type='text'
+              aria-describedby='title-desc'
               onChange={ontitleChange}
               value={title}
             />
-            <label htmlFor="description" className="f6 b db mb2">
+            <label htmlFor='description' className='f6 b db mb2'>
               Description
             </label>
             <input
-              id="description"
-              className="input-reset ba b--black-20 pa2 mb2 db w-100"
-              type="text"
-              aria-describedby="description-desc"
+              id='description'
+              className='input-reset ba b--black-20 pa2 mb2 db w-100'
+              type='text'
+              aria-describedby='description-desc'
               onChange={ondescriptionChange}
               value={description}
             />
-            <label htmlFor="body" className="f6 b db mb2">
+            <label htmlFor='body' className='f6 b db mb2'>
               Body
             </label>
             <textarea
-              id="body"
-              className="input-reset ba b--black-20 pa2 mb2 db w-100"
-              type="text"
-              aria-describedby="body desc"
+              id='body'
+              className='input-reset ba b--black-20 pa2 mb2 db w-100'
+              type='text'
+              aria-describedby='body desc'
               onChange={onmainbodyChange}
               value={mainbody}
             />
-            <div className="">
+            <div className=''>
               <input
-                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
-                type="button"
-                value="Save"
+                className='b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib'
+                type='button'
+                value='Save'
                 onClick={onSubmitsave}
               />
               &nbsp; &nbsp;
               <input
-                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
-                type="button"
-                value="Cancel"
+                className='b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib'
+                type='button'
+                value='Cancel'
                 onClick={onsubmitCancel}
               />
             </div>
