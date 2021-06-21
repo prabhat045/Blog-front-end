@@ -7,7 +7,7 @@ export const Store = (props) => {
   const initialState = JSON.parse(localStorage.getItem("user"));
   useEffect(() => {
     setUserState(initialState);
-  }, [initialState]);
+  }, []);
 
   function setUser(user) {
     setUserState(user);
