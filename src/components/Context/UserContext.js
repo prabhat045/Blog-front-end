@@ -3,7 +3,7 @@ import React, { createContext, useState, useEffect } from "react";
 export const UserContext = createContext({});
 
 export const Store = (props) => {
-  const [user, setUserState] = useState({});
+  const [user, setUserState] = useState({ id: "", name: "", email: "" });
   const initialState = JSON.parse(localStorage.getItem("user"));
   useEffect(() => {
     setUserState(initialState);
