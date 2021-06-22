@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./article.css";
 
 const Articles = (props) => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [mainbody, setBody] = useState("");
+  // const [title, setTitle] = useState("");
+  // const [description, setDescription] = useState("");
+  // const [mainbody, setBody] = useState("");
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -13,8 +13,7 @@ const Articles = (props) => {
       headers: { "Content-type": "application/json" },
     }).then((response) =>
       response.json().then((data) => {
-        setData([data]);
-        console.log(data);
+        setData(data);
       })
     );
   }, []);

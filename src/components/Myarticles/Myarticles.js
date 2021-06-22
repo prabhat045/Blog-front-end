@@ -1,22 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-const Myarticles = () => {
+const Myarticles = (props) => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5001/articles/getMyarticles", {
+      method: "get",
+      headers: { "Content-type": "application/json" },
+    }).then((response) =>
+      response.json().then((data) => {
+        setData(data);
+      })
+    );
+  }, []);
+
   return (
-    <div>
-      <article className='bg-white center mw5 ba b--black-10 shadow-4 mv4'>
-        <div className='pv2 ph3'>
-          <h1 className='f6 ttu tracked'>Title</h1>
-        </div>
-        <p>Body</p>
-        <div className='pa3'>
-          <a href='google.com' className='link dim lh-title'>
-            Description
-          </a>
-          <small className='gray db pv2'>
-            <time>Time</time>
-          </small>
-        </div>
-      </article>
+    <div className='row'>
+      {data.map((data) => {
+        return (
+          <div className='column' key={data.id}>
+            <div className='card'>
+              <h3 className='title'>{data.title} </h3>
+              <p className='description'>{data.description}</p>
+              <p className='body'>{data.mainbody}</p>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };
