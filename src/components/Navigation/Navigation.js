@@ -3,13 +3,14 @@ import { Link, useHistory } from "react-router-dom";
 import "./navigation.css";
 import { UserContext } from "../Context/UserContext";
 
-const Navigation = () => {
+const Navigation = (props) => {
   const { resetUser } = useContext(UserContext);
   let history = useHistory();
   const onLogout = () => {
     history.push("/");
     resetUser();
   };
+  console.log(props.userId);
   return (
     <div>
       <nav className="nav">
@@ -21,7 +22,7 @@ const Navigation = () => {
           <Link to="/write">
             <li className="pointer">Write</li>
           </Link>
-          <Link to="/Myarticles">
+          <Link to={{ pathname: "/Myarticles", userId: props.userId }}>
             <li className="pointer">Myarticles</li>
           </Link>
 

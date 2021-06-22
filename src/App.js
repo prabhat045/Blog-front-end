@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import "./App.css";
-import Signin from "./components/Signin/Signin";
-import Home from "./components/Home/Home";
-import "tachyons";
-import Register from "./components/Register/Register";
-import Write from "./components/Write/Write";
-import Myarticles from "./components/Myarticles/Myarticles";
+import React, { useContext } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import "tachyons";
+import "./App.css";
 import { Store } from "./components/Context/UserContext";
+import Home from "./components/Home/Home";
+import MyArticles from "./components/Myarticles/MyArticles";
 import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
+import Register from "./components/Register/Register";
+import Signin from "./components/Signin/Signin";
+import Write from "./components/Write/Write";
 
 const App = () => {
   return (
@@ -19,7 +19,7 @@ const App = () => {
           <Route exact path="/signin" component={Signin} />
           <Route exact path="/Registration" component={Register} />
           <Route exact path="/Write" component={Write} />
-          <Route exact path="/Myarticles" component={Myarticles} />
+          <Route exact path="/Myarticles" component={MyArticles} userId={1} />
         </div>
       </Router>
     </Store>
