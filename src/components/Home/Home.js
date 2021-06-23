@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Navigation from "../Navigation/Navigation";
 import Cover from "../Cover/Cover";
 import Articles from "../Articles/Articles";
@@ -9,7 +9,7 @@ const Home = () => {
   const userId = user.id;
   return (
     <div>
-      <h1>{userId}</h1>
+      <h3>{user.name}</h3>
       <Navigation userId={userId} />
       <Cover />
       <br />

@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
-import { UserContext } from "../Context/UserContext";
+import React, { useState, useEffect } from "react";
 
 const MyArticles = (props) => {
   const userId = props.location.userId.toString();
@@ -14,13 +13,13 @@ const MyArticles = (props) => {
         setData(data);
       })
     );
-  }, []);
+  }, [userId]);
 
   return (
     <div className="row">
       {data.map((data) => {
         return (
-          <div className="column" key={data.id}>
+          <div className="column" key={data._id}>
             <div className="card">
               <h3 className="title">{data.title} </h3>
               <p className="description">{data.description}</p>

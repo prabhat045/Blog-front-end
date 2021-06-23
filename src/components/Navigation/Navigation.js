@@ -10,7 +10,6 @@ const Navigation = (props) => {
     history.push("/");
     resetUser();
   };
-  console.log(props.userId);
   return (
     <div>
       <nav className="nav">

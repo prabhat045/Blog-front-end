@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "tachyons";
 import "./App.css";
@@ -19,7 +19,7 @@ const App = () => {
           <Route exact path="/signin" component={Signin} />
           <Route exact path="/Registration" component={Register} />
           <Route exact path="/Write" component={Write} />
-          <Route exact path="/Myarticles" component={MyArticles} userId={1} />
+          <Route exact path="/Myarticles" component={MyArticles} />
         </div>
       </Router>
     </Store>

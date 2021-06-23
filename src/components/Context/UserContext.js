@@ -1,13 +1,17 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useMemo } from "react";
 
 export const UserContext = createContext({});
 
-export const Store = (props) => {
+export const Store = React.memo((props) => {
   const [user, setUserState] = useState({ id: "", name: "", email: "" });
-  const initialState = JSON.parse(localStorage.getItem("user"));
+  const fetchUserDataFromLocalStorage = localStorage.getItem("user");
+  const initialState = useMemo(() => {
+    return JSON.parse(fetchUserDataFromLocalStorage);
+  }, [fetchUserDataFromLocalStorage]);
+
   useEffect(() => {
     setUserState(initialState);
-  }, []);
+  }, [initialState]);
 
   function setUser(user) {
     setUserState(user);
@@ -23,4 +27,4 @@ export const Store = (props) => {
       {props.children}
     </UserContext.Provider>
   );
-};
+});
